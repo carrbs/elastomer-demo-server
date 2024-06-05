@@ -1,0 +1,19 @@
+name: elastomer-demo-server
+services:
+  # TODO: do this later once things are workin'
+  # web:
+  #   build: .
+  #   command: bundle exec rails s -p 3000 -b '0.0.0.0'
+  #   volumes:
+  #     - .:/my_app
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - elasticsearch
+  elasticsearch:
+    image: elasticsearch:8.13.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
